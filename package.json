@@ -1,0 +1,15 @@
+{
+  "name": "dynamodb-starbucks",
+  "version": "1.0.0",
+  "description": "This is example code for the [hierarchical data modeling](https://www.dynamodbguide.com/hierarchical-data) example on [DynamoDBGuide.com](https://www.dynamodbguide.com). It uses a real dataset with 25,000 Starbucks locations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.1148.0"
+  }
+}
