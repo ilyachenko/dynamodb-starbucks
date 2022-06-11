@@ -14,19 +14,22 @@ async function saveLine(item) {
     ReturnConsumedCapacity: "TOTAL",
   };
 
-  const res = await ddb.putItem(params).promise();
-  count += 1;
-  if (count % 1000 == 0) {
-    console.log(count + " locations written...");
-  }
+  await ddb.putItem(params).promise();
 }
 
 const text = fs.readFileSync("./Starbucks.json", "utf8");
 
 const items = JSON.parse(text).Items;
 
-let count = 0;
+console.log(`Items count ${items.length}`);
 
-items.map(async (item) => {
-  await saveLine(item);
-});
+(async function () {
+  console.time("Time");
+  for (let i = 0; i < items.length; ) {
+    await saveLine(items[i]);
+    if (++i % 1000 == 0) {
+      console.log(`${i} items written`);
+    }
+  }
+  console.timeEnd("Time");
+})();
